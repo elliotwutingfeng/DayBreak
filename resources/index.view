@@ -1,0 +1,44 @@
+<svg>
+  <rect width="100%" height="100%" fill="black" />
+  <svg id="heartRate">
+    <image href="img/heart.png" id="heartRateIcon">
+      <animate id="heartRateIconAnimate" attributeName="opacity" begin="load" from="1" to="1" dur="1" easing="ease" repeatCount="indefinite" />
+    </image>
+    <text id="heartRateLabel" />
+  </svg>
+  <section id="stepCount">
+    <image href="img/steps.png" id="stepCountIcon" />
+    <text id="stepCountLabel" />
+  </section>
+  <svg id="battery">
+    <image href="img/battery_full.png" id="batteryIcon" />
+    <text id="batteryLabel" />
+  </svg>
+  <text id="datestampLabel" />
+  <text id="timestampLabel" />
+  <svg id="gps">
+    <image href="img/gps.png" id="gpsIcon">
+      <animate id="gpsIconAnimate" attributeName="opacity" begin="load" from="1" to="1" dur="1" easing="ease" repeatCount="indefinite" />
+    </image>
+    <text id="gpsLabel" />
+  </svg>
+  <text font-family="System-Bold" font-size="23" text-length="9" text-anchor="start" x="3%" y="57%" fill="lightgrey">Current</text>
+  <text font-family="System-Bold" font-size="23" text-length="9" text-anchor="end" x="97%" y="57%" fill="lightgrey">Next</text>
+  <text id="currentPartLabel_0" />
+  <text id="currentPartLabel_1" />
+  <text id="currentPartTimeLabel" />
+  <text id="upcomingPartLabel_0" />
+  <text id="upcomingPartLabel_1" />
+  <text id="upcomingPartTimeLabel" />
+  <section id="progress" width="86%" x="7%" y="80%">
+    <rect id="progressBarOuterBackground" fill="white" height="10" width="100%" y="-2" />
+    <svg id="progressInner" width="100%-2" x="1" y="-1">
+      <rect id="progressBarInnerBackground" fill="black" width="100%" height="8" />
+      <rect id="progressBar" fill="black" height="8" />
+    </svg>
+    <rect id="progressBar25Tick" fill="white" width="1" height="10" x="25%" y="-2" />
+    <rect id="progressBar50Tick" fill="white" width="1" height="10" x="50%" y="-2" />
+    <rect id="progressBar75Tick" fill="white" width="1" height="10" x="75%" y="-2" />
+  </section>
+  <text id="timeLeftToUpcomingPartLabel" />
+</svg>

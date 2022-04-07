@@ -1,0 +1,186 @@
+/* HEART RATE */
+#heartRate {
+  width: 40;
+  height: 30;
+  x: 9%;
+  y: 16%;
+}
+#heartRateIcon {
+  width: 28;
+  height: 28;
+  x: 0;
+  y: -23;
+}
+#heartRateLabel {
+  text-anchor: start;
+  font-size: 28;
+  font-family: System-Bold;
+  fill: white;
+  x: 32;
+  y: 0;
+  text-length: 5;
+}
+
+/* STEP COUNT */
+#stepCount {
+  width: 40;
+  height: 30;
+  x: 32%;
+  y: 16%;
+}
+#stepCountIcon {
+  width: 28;
+  height: 28;
+  x: 0;
+  y: -25;
+}
+#stepCountLabel {
+  text-anchor: start;
+  font-size: 28;
+  font-family: System-Bold;
+  fill: white;
+  x: 29;
+  y: 0;
+  text-length: 7;
+}
+
+/* BATTERY LIFE */
+#battery {
+  width: 40;
+  height: 30;
+  x: 66%;
+  y: 16%;
+}
+#batteryIcon {
+  width: 28;
+  height: 28;
+  x: 0;
+  y: -25;
+}
+#batteryLabel {
+  text-anchor: start;
+  font-size: 28;
+  font-family: System-Bold;
+  fill: white;
+  x: 26;
+  y: 0;
+  text-length: 5;
+}
+
+/* DATE */
+#datestampLabel {
+  font-size: 26;
+  font-family: System-Bold;
+  text-length: 64;
+  text-anchor: middle;
+  x: 50%;
+  y: 26%;
+  fill: lightgrey;
+}
+
+/* TIME */
+#timestampLabel {
+  font-size: 60;
+  font-family: System-Bold;
+  text-length: 64;
+  text-anchor: middle;
+  x: 50%;
+  y: 42%;
+  fill: gold;
+}
+
+/* CURRENT DAY PHASE */
+#currentPartLabel_0 {
+  font-size: 22;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: start;
+  x: 3%;
+  y: 64%;
+  fill: gold;
+}
+#currentPartLabel_1 {
+  font-size: 22;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: start;
+  x: 3%;
+  y: 71%;
+  fill: gold;
+}
+
+/* UPCOMING DAY PHASE */
+#upcomingPartLabel_0 {
+  font-size: 22;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: end;
+  x: 97%;
+  y: 64%;
+  fill: gold;
+}
+#upcomingPartLabel_1 {
+  font-size: 22;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: end;
+  x: 97%;
+  y: 71%;
+  fill: gold;
+}
+
+/* CURRENT DAY PHASE TIMESTAMP */
+#currentPartTimeLabel {
+  font-size: 21;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: start;
+  x: 3%;
+  y: 78%;
+  fill: white;
+}
+
+/* UPCOMING DAY PHASE TIMESTAMP */
+#upcomingPartTimeLabel {
+  font-size: 21;
+  font-family: System-Regular;
+  text-length: 64;
+  text-anchor: end;
+  x: 97%;
+  y: 78%;
+  fill: white;
+}
+
+/* GPS */
+#gps {
+  width: 80%;
+  height: 30;
+  x: 10%;
+  y: 50%;
+}
+#gpsIcon {
+  width: 22;
+  height: 22;
+  x: 0;
+  y: -18;
+}
+#gpsLabel {
+  x: 32;
+  y: 0;
+  fill: white;
+  text-anchor: start;
+  text-length: 28;
+  font-size: 21;
+  font-family: System-Bold;
+}
+
+/* TIME REMAINING TO NEXT DAY PHASE */
+#timeLeftToUpcomingPartLabel {
+  font-size: 29;
+  font-family: System-Bold;
+  text-length: 64;
+  text-anchor: middle;
+  x: 50%;
+  y: 91%;
+  fill: magenta;
+}
