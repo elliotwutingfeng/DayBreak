@@ -22,11 +22,13 @@
 
 ## Features
 
-- [x] Heart Rate reading, Daily Step counter and Battery Status
-- [x] Date & Time
-- [x] GPS connection status & GPS coordinates
-- [x] Names and timings of Current and Next phases of day
-- [x] Progressbar and countdown timer to Next phase of day
+- [x] :heart: Heart Rate reading
+- [x] :athletic_shoe: Daily Step counter
+- [x] :battery: Battery Status
+- [x] :watch: Date & Time
+- [x] :globe_with_meridians: GPS connection status & GPS coordinates
+- [x] :sunrise_over_mountains: Names and timings of Current and Next phases of day
+- [x] :hourglass_flowing_sand: Progressbar and countdown timer to Next phase of day
 
 ## Getting Started
 
