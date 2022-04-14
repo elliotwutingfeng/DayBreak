@@ -1,68 +1,78 @@
 import SunCalc from "./suncalc";
 
 export function updateSunTimes(now, latitude, longitude) {
-  const sunTimes_ = SunCalc.getSunTimes(now, latitude, longitude);
-  const sunTimes = {};
-  for (const k of Object.keys(sunTimes_)) {
-    sunTimes[k] = sunTimes_[k].value;
+  const oneDayAgo = new Date(now.getTime());
+  oneDayAgo.setDate(now.getDate() - 1);
+  const oneDayInTheFuture = new Date(now.getTime());
+  oneDayInTheFuture.setDate(now.getDate() + 1);
+
+  const sunTimes_oneDayAgo = SunCalc.getSunTimes(
+    oneDayAgo,
+    latitude,
+    longitude,
+    0,
+    false,
+    true
+  );
+  const sunTimes_ = SunCalc.getSunTimes(
+    now,
+    latitude,
+    longitude,
+    0,
+    false,
+    true
+  );
+  const sunTimes_oneDayInTheFuture = SunCalc.getSunTimes(
+    oneDayInTheFuture,
+    latitude,
+    longitude,
+    0,
+    false,
+    true
+  );
+
+  const partsOfDay = [];
+  for (const s of [sunTimes_oneDayAgo, sunTimes_, sunTimes_oneDayInTheFuture]) {
+    const sunTimes = {};
+    for (const k of Object.keys(s)) {
+      sunTimes[k] = s[k].value;
+    }
+    const partsOfDay_ = Object.keys(partsOfDayNames).map((k) => [
+      k,
+      sunTimes[k],
+    ]);
+    partsOfDay.push(...partsOfDay_);
   }
 
-  const partsOfDay = [
-    "astronomicalDawn",
-    "amateurDawn",
-    "nauticalDawn",
-    "blueHourDawnStart",
-    "civilDawn",
-    "blueHourDawnEnd",
-    "goldenHourDawnStart",
-    "sunriseStart",
-    "sunriseEnd",
-    "goldenHourDawnEnd",
-    "solarNoon",
-    "goldenHourDuskStart",
-    "sunsetStart",
-    "sunsetEnd",
-    "goldenHourDuskEnd",
-    "blueHourDuskStart",
-    "civilDusk",
-    "blueHourDuskEnd",
-    "nauticalDusk",
-    "amateurDusk",
-    "astronomicalDusk",
-    "nadir",
-  ].map((k) => [k, sunTimes[k]]);
+  /*
+  // partsOfDay should already be in ascending order of timestamp
+  let dNow = partsOfDay[0][1];
+  let notSorted = false;
+  for (const x of partsOfDay) {
+    if (dNow > x[1]) {
+      notSorted = true;
+      break;
+    }
+    dNow = x[1];
+  }
+  console.log(`partsOfDay is ${notSorted ? "not " : ""}sorted`);
+  */
 
   // because .find and .findIndex not supported by SDK
 
-  const currentPart = (function (partsOfDay) {
+  const { currentPart, upcomingPart } = (function (partsOfDay) {
     // starting from earliest day phase timing
-    // find the first day phase timing that is later than now
-    // the currentPart is the day phase timing just before that
+    // find upcomingPart; the first day phase timing that is later than now
+    // the currentPart is the day phase timing just before upcomingPart
     for (let idx = 0; idx < partsOfDay.length; idx++) {
       if (now < partsOfDay[idx][1]) {
-        const currentPartIndex = idx - 1;
-        // edge case where currentPart is day phase before earliest day phase
-        return currentPartIndex === -1
-          ? partsOfDay[partsOfDay.length - 1]
-          : partsOfDay[currentPartIndex];
+        return {
+          currentPart: partsOfDay[idx - 1],
+          upcomingPart: partsOfDay[idx],
+        };
       }
     }
   })(partsOfDay);
-
-  const upcomingPart = (function (partsOfDay, currentPart) {
-    // starting from earliest day phase timing
-    // find the day phase timing that is equal to currentPart day phase timing
-    // the upcomingPart is the day phase timing just after that
-    for (let idx = 0; idx < partsOfDay.length; idx++) {
-      if (partsOfDay[idx][0] === currentPart[0]) {
-        const upcomingPartIndex = idx + 1;
-        // edge case where upcomingPart is day phase after latest day phase
-        return upcomingPartIndex === partsOfDay.length
-          ? partsOfDay[0]
-          : partsOfDay[upcomingPartIndex];
-      }
-    }
-  })(partsOfDay, currentPart);
 
   return { currentPart, upcomingPart };
 }

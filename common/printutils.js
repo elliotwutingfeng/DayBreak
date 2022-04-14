@@ -16,9 +16,9 @@ export function printSteps() {
 export function printBatteryLife() {
   document.getElementById("batteryIcon").href = battery.charging
     ? "img/battery_charging.png"
-    : battery.chargeLevel > 75
+    : battery.chargeLevel > 60
     ? "img/battery_full.png"
-    : battery.chargeLevel > 25
+    : battery.chargeLevel > 20
     ? "img/battery_half_full.png"
     : "img/battery_empty.png";
 
@@ -76,22 +76,21 @@ export function printUpcomingPart(upcomingPart) {
 }
 
 export function updateProgressBar(
-  currentPart,
-  upcomingPart,
-  timeLeftToUpcomingPart
+  timeLeftToUpcomingPart,
+  currentPhaseDuration
 ) {
   const progressInner = document.getElementById("progressInner");
   const progressBar = document.getElementById("progressBar");
-  // Based on timeLeftToUpcomingPart, calculate percentage
-  // of current phase completed
-  const { hours, minutes, seconds } = timeLeftToUpcomingPart;
+  // Calculate percentage of current phase completed
+  let { hours, minutes, seconds } = timeLeftToUpcomingPart;
   const secondsLeftToNextPhase =
     Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
-  const currentPhaseTotalDurationInSeconds =
-    (upcomingPart[1] - currentPart[1]) / 1000;
+  ({ hours, minutes, seconds } = currentPhaseDuration);
+  const secondsFromCurrentToNextPhase =
+    Number(hours) * 60 * 60 + Number(minutes) * 60 + Number(seconds);
   // percentage is on scale of 0 to 1
   const percentageCompleted =
-    1 - secondsLeftToNextPhase / currentPhaseTotalDurationInSeconds;
+    1 - secondsLeftToNextPhase / secondsFromCurrentToNextPhase;
 
   // Scale and color progressBar according to this percentage
   const maxWidth = progressInner.getBBox().width;

@@ -1,0 +1,5 @@
+ffffff // battery_charging.png
+ff0000 // battery_empty.png gps_unavailable.png heart.png
+12ff00 // battery_full.png gps.png
+ff9b00 // battery_half_full.png
+00b0b9 // steps.png

@@ -24,6 +24,7 @@ if (!existsSync(`/private/data/${gps_coords_filename}`)) {
     {
       latitude: 1.3521,
       longitude: 103.8198,
+      unixMillis: 0,
     },
     "cbor"
   );
@@ -85,21 +86,19 @@ if (BodyPresenceSensor) {
 function locationSuccess(position) {
   // save coordinates to file
   const { longitude, latitude } = position.coords;
+  const unixMillis = new Date().getTime();
   writeFileSync(
     gps_coords_filename,
     {
       latitude,
       longitude,
+      unixMillis,
     },
     "cbor"
   );
-  // gps status icon active
-  locationIsUpToDate = true;
 }
 // eslint-disable-next-line no-unused-vars
 function locationError(error) {
-  // gps status icon inactive
-  locationIsUpToDate = false;
   // console.error("Error: " + error.code, "Message: " + error.message);
 }
 
@@ -108,7 +107,10 @@ clock.granularity = "seconds";
 clock.ontick = (evt) => {
   const { now, year, month, date, day, hours, minutes, seconds, ampm } =
     datetimeutils.getDateTimeComponents(evt.date);
-  const { longitude, latitude } = readFileSync(gps_coords_filename, "cbor");
+  const { longitude, latitude, unixMillis } = readFileSync(
+    gps_coords_filename,
+    "cbor"
+  );
   const { currentPart, upcomingPart } = partofdayutils.updateSunTimes(
     now,
     latitude,
@@ -118,6 +120,13 @@ clock.ontick = (evt) => {
     upcomingPart[1],
     now
   );
+  const currentPhaseDuration = datetimeutils.calcTimeInterval(
+    upcomingPart[1],
+    currentPart[1]
+  );
+
+  // Last known GPS reading was less than 20 min ago
+  locationIsUpToDate = now.getTime() - unixMillis < 1_200_000; // 1200 s => 20 min
 
   printutils.printHeartRate(heartRate);
   printutils.printSteps();
@@ -131,11 +140,7 @@ clock.ontick = (evt) => {
   printutils.printCurrentPart(currentPart);
   printutils.printUpcomingPart(upcomingPart);
 
-  printutils.updateProgressBar(
-    currentPart,
-    upcomingPart,
-    timeLeftToUpcomingPart
-  );
+  printutils.updateProgressBar(timeLeftToUpcomingPart, currentPhaseDuration);
 
   printutils.printTimeLeftToUpcomingPart(timeLeftToUpcomingPart);
 };
