@@ -35,6 +35,7 @@
 ### Prerequisites
 
 - Node.js 16 (currently not compatible with Node.js 17+)
+- Fitbit account
 - Fitbit OS Simulator (Windows/Mac only) or Fitbit Sense or Fitbit Versa 3
 
 ### Setup Instructions
@@ -63,6 +64,7 @@ To exit Fitbit CLI, press `Ctrl-C` twice.
 
 - The sun position timings are calculated using [suncalc3](https://github.com/Hypnos3/suncalc3).
 - The sun position timings are theoretically accurate to within a minute for locations between +/- 72° latitude, and within 10 minutes outside of those latitudes. The nearer you are to the equator, the more accurate the timings. However, due to variations in weather conditions, observed values may vary from calculations. More information is available [here](https://gml.noaa.gov/grad/solcalc/calcdetails.html).
+- GPS tracker is disabled when Fitbit is off the wrist to conserve battery life.
 
 ## Acknowledgements
 

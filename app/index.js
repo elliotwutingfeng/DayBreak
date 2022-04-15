@@ -105,7 +105,7 @@ function locationError(error) {
 // whenever a second passes
 clock.granularity = "seconds";
 clock.ontick = (evt) => {
-  const { now, year, month, date, day, hours, minutes, seconds, ampm } =
+  const { now, month, date, day, hours, minutes, seconds, ampm } =
     datetimeutils.getDateTimeComponents(evt.date);
   const { longitude, latitude, unixMillis } = readFileSync(
     gps_coords_filename,

@@ -1,10 +1,12 @@
 import SunCalc from "./suncalc";
 
 export function updateSunTimes(now, latitude, longitude) {
-  const oneDayAgo = new Date(now.getTime());
-  oneDayAgo.setDate(now.getDate() - 1);
-  const oneDayInTheFuture = new Date(now.getTime());
-  oneDayInTheFuture.setDate(now.getDate() + 1);
+  const oneDayAgo = new Date(
+    new Date(now.getTime()).setDate(now.getDate() - 1)
+  );
+  const oneDayInTheFuture = new Date(
+    new Date(now.getTime()).setDate(now.getDate() + 1)
+  );
 
   const sunTimes_oneDayAgo = SunCalc.getSunTimes(
     oneDayAgo,
