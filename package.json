@@ -4,15 +4,15 @@
   "private": true,
   "license": "BSD-3-Clause",
   "devDependencies": {
-    "@fitbit/sdk": "~6.1.0",
-    "@fitbit/sdk-cli": "^1.7.3",
+    "@fitbit/sdk": "6.1.0",
+    "@fitbit/sdk-cli": "1.7.3",
     "eslint": "8.14.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "lint-staged": "^12.3.7",
-    "prettier": "^2.6.2"
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "lint-staged": "12.3.7",
+    "prettier": "2.6.2"
   },
   "fitbit": {
     "appUUID": "f699d853-0d3d-48b5-99a1-ac71f69b30d6",
