@@ -12,7 +12,7 @@
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-prettier": "4.2.1",
     "lint-staged": "13.2.0",
-    "prettier": "2.8.5"
+    "prettier": "2.8.6"
   },
   "fitbit": {
     "appUUID": "f699d853-0d3d-48b5-99a1-ac71f69b30d6",
