@@ -7,7 +7,7 @@
     "@fitbit/sdk": "6.1.0",
     "@fitbit/sdk-cli": "1.7.3",
     "eslint": "9.31.0",
-    "eslint-config-prettier": "9.1.1",
+    "eslint-config-prettier": "9.1.2",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-prettier": "5.5.1",
