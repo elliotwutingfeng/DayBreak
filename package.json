@@ -11,7 +11,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-prettier": "5.5.7",
-    "lint-staged": "17.6.2",
+    "lint-staged": "17.6.3",
     "prettier": "3.10.1"
   },
   "fitbit": {
